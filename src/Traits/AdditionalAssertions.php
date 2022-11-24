@@ -29,7 +29,10 @@ trait AdditionalAssertions
 
     public function assertActionUsesFormRequest(string $controller, string $method, string $form_request)
     {
-        PHPUnitAssert::assertTrue(is_subclass_of($form_request, 'Illuminate\\Foundation\\Http\\FormRequest'), $form_request . ' is not a type of Form Request');
+        $isSubclassOf = is_subclass_of($form_request, 'Illuminate\\Foundation\\Http\\FormRequest')
+            || is_subclass_of($form_request, 'Spatie\\LaravelData\\Data');
+
+        PHPUnitAssert::assertTrue($isSubclassOf, $form_request . ' is not a type of Form Request or Spatie Data');
 
         try {
             $reflector = new \ReflectionClass($controller);
