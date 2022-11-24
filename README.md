@@ -1,3 +1,6 @@
+# Info
+Add compatibility with Spatie/LaravelData
+
 # Laravel Test Assertions
 A set of helpful assertions when testing Laravel applications.
 
